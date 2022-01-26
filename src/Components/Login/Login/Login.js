@@ -8,12 +8,13 @@ import useAuth from '../../../hooks/useAuth';
 
 const Login = () => {
     const { register, handleSubmit,reset } = useForm();
-    const {loginUser,user}=useAuth();
+    const {loginUser,user,googleLogin}=useAuth();
     const onSubmit = data => {
         loginUser(data?.email,data?.password)
         console.log(user.email)
         reset()
     };
+
     return (
         <div className='login-bg'>
            <div className='w-100 mx-auto pt-5' >
@@ -27,7 +28,10 @@ const Login = () => {
                     <br/>
                     <input className='w-100 m-1 rounded py-3 btn btn-primary fw-bolder fs-5' type="submit" value="Login" />
                     <Link to ='/register' className='text-decoration-none'> <h4 className='pt-3 text-black fw-bolder'>New User? <span className='text-primary'>Please Register</span></h4></Link>
+                  <div className='text-white fw-bolder text-center'>----------------------or--------------------</div> <br />
+                  <img onClick={googleLogin} className=' google-img' src="https://d3atsf3fgek2rw.cloudfront.net/content/uploads/2013/09/GoogleLogo.jpg" alt="" />
                 </form>}
+            
            </div>
         </div>
     );

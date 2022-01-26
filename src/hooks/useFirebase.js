@@ -1,12 +1,27 @@
 import { useEffect, useState } from "react";
 import initializeFirebase from "../Components/Login/Login/Firebase/firebase.init";
-import { getAuth,signOut, createUserWithEmailAndPassword,signInWithEmailAndPassword,onAuthStateChanged } from "firebase/auth";
+import {signInWithPopup,GoogleAuthProvider, getAuth,signOut, createUserWithEmailAndPassword,signInWithEmailAndPassword,onAuthStateChanged } from "firebase/auth";
 initializeFirebase();
 const useFirebase=()=>{
     const [user,setUser]=useState({});
     const [isLoading,setIsLoading]=useState(true);
     const [authError,setAuthError]=("")
     const auth = getAuth();
+    const googleProvider = new GoogleAuthProvider();
+
+    const googleLogin=()=>{
+      setIsLoading(true)
+      signInWithPopup(auth, googleProvider)
+     .then((result) => {
+
+    const user = result.user;
+    setUser(user)
+    // ...
+  })       .catch((error) => {
+    setAuthError(error.message)
+    // ..
+     }).finally(()=>setIsLoading(false))
+   };
 
     const registerUser=(email,password)=>{
       setIsLoading(true)
@@ -60,6 +75,7 @@ const useFirebase=()=>{
         registerUser,
         loginUser,
         logOut,
+        googleLogin,
         isLoading,
         authError,
     }
