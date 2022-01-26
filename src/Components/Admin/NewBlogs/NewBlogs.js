@@ -3,8 +3,8 @@ import { Container } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
-import Header from '../Header/Header';
-import './addTravelExperience.css'
+import AdminHeader from '../AdminHeader/AdminHeader';
+
 
 
 const AddTravelExperience = () => {
@@ -18,12 +18,13 @@ const AddTravelExperience = () => {
     
     return (
         <div className='travel-bg'>
-            <Header/>
-           <div className='w-100 mx-auto mb-5 pb-5' >
-                {<form className='w-50 mx-auto mt-5 pt-5' onSubmit={handleSubmit(onSubmit)}>
-                <h1 className='text-center fw-bolder text-danger'>Share Travel Experience Form</h1>
+          
+           <AdminHeader/>
+           <div className='w-100 mx-auto pb-5' >
+                {<form className='w-50 mx-auto  pt-5' onSubmit={handleSubmit(onSubmit)}>
+                <h1 className='text-center fw-bolder text-danger'>NEW TRAVEL BLOG POST</h1>
                    
-                    <input className='w-100 m-1 rounded py-3' {...register("email",{required:true})} type="email" value={user?.email} />
+                    <input className='w-100 m-1 rounded py-3' {...register("email",{required:true})} type="email" defaultValue={user?.email} />
                     <input className='w-100 m-1 rounded py-3' {...register("displayName")} type="text" required placeholder='Write Your Name'  />
                     <input className='w-100 m-1 rounded py-3' {...register("number")} type="text" required placeholder='Write Your Number'  />
                     <input className='w-100 m-1 rounded py-3' {...register("title")} type="text" required placeholder='Write Travel Place Name'  />

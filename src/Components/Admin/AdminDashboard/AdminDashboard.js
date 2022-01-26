@@ -1,9 +1,12 @@
+
 import React from 'react';
+import AdminHeader from '../AdminHeader/AdminHeader';
 
 const AdminDashboard = () => {
     return (
         <div>
-            <h1>This is Admin DashBoard Page</h1>
+            <AdminHeader/>
+            
         </div>
     );
 };

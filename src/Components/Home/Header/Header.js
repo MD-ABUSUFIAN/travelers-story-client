@@ -16,7 +16,7 @@ const Header = () => {
     <Nav className="ms-auto">
     <NavLink className="navLink" to="/home">Home</NavLink>
     <NavLink className="navLink" to="/addExpreience">Add-Travel-Exprience</NavLink>
-    <NavLink className="navLink" to="contact">Contact</NavLink>
+    <NavLink className="navLink" to="/contact">Contact</NavLink>
     
         {
             user?.email ? <div> <Button onClick={logOut} className='btn-danger navLink border-0 fw-bolder'>

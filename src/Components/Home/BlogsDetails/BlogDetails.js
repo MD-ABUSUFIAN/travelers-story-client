@@ -3,6 +3,7 @@ import { Container } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import './BlogDetails.css';
 import StarRating from 'react-bootstrap-star-rating';
+import Header from '../Header/Header';
 
 const BlogDetails = () => {
     const [blogs,setBlogs]=useState([])
@@ -19,7 +20,9 @@ const BlogDetails = () => {
     console.log(singleBlog)
     
     return (
-        <Container>
+        <div>
+            <Header/>
+            <Container>
             <div className='details-body'>
                 <div>
                     <img className='w-100 h-50 rounded' src={singleBlog[0]?.img} alt="" />
@@ -33,6 +36,7 @@ const BlogDetails = () => {
             </div>
             
         </Container>
+        </div>
     );
 };
 
