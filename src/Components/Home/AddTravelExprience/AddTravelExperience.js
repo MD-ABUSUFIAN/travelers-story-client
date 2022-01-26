@@ -11,8 +11,9 @@ const AddTravelExperience = () => {
     const { register, handleSubmit,reset } = useForm();
     const {loginUser,user}=useAuth();
     const onSubmit = data => {
-       
+        data.status=false;
         console.log(data)
+        reset()
        
     };
     

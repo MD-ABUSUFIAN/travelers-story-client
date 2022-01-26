@@ -14,6 +14,8 @@ import AuthProvider from './contexts/AuthProvider/AuthProvider';
 import BlogDetails from './Components/Home/BlogsDetails/BlogDetails';
 import Blogs from './Components/Home/Blogs/Blogs';
 import NewBlogs from '../src/Components/Admin/NewBlogs/NewBlogs'
+import AllBlogs from './Components/Admin/AllBlogs/AlllBlogs';
+import ManageBlogs from './Components/Admin/ManageBlogs/ManageBlogs';
 
 
 
@@ -35,6 +37,8 @@ function App() {
             <Route path="/blogs" element={<Blogs/>}/>      
             <Route path="/blog/:detailsId" element={<BlogDetails/>}/>      
             <Route path="/newBlog" element={<NewBlogs/>}/>      
+            <Route path="/allBlogs" element={<AllBlogs/>}/>      
+            <Route path="/manageBlogs" element={<ManageBlogs/>}/>      
           </Routes>
         <Footer/>
      </BrowserRouter>
