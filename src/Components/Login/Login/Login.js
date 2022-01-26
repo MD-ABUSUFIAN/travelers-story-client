@@ -3,16 +3,19 @@ import { Container } from 'react-bootstrap';
 import './login.css';
 import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
+import useFirebase from '../../../hooks/useFirebase';
+import useAuth from '../../../hooks/useAuth';
 
 const Login = () => {
     const { register, handleSubmit,reset } = useForm();
+    const {loginUser,user}=useAuth();
     const onSubmit = data => {
-        console.log(data)
+        loginUser(data?.email,data?.password)
+        console.log(user.email)
         reset()
     };
     return (
         <div className='login-bg'>
-            
            <div className='w-100 mx-auto pt-5' >
                 {<form className='w-50 mx-auto mt-5 pt-5' onSubmit={handleSubmit(onSubmit)}>
                 <h1 className='text-center fw-bolder text-danger'>LOGIN</h1>
