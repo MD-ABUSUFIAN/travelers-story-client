@@ -4,7 +4,8 @@ import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import Header from '../Header/Header';
-import './addTravelExperience.css'
+import './addTravelExperience.css';
+import swal from 'sweetalert';
 
 
 const AddTravelExperience = () => {
@@ -12,8 +13,19 @@ const AddTravelExperience = () => {
     const {loginUser,user}=useAuth();
     const onSubmit = data => {
         data.status=false;
+       fetch('http://localhost:5000/newBlog',{
+           method:"POST",
+           headers:{'content-type':'application/json'},
+           body:JSON.stringify(data)
+       }).then(res=>res.json())
+       .then(data=>{
+           if(data?.insertedId){
+            swal("Successfully", "Thank You Successfully Added", "success");
+            console.log(data)
+            reset()
+           }
+       })
         console.log(data)
-        reset()
        
     };
     

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, ButtonToolbar, Container } from 'react-bootstrap';
+import { Button, ButtonToolbar, Container, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import AdminHeader from '../AdminHeader/AdminHeader';
 import './manageBlogs.css'
@@ -7,10 +7,15 @@ import './manageBlogs.css'
 
 const ManageBlogs = () => {
     const [blogs,setBlogs]=useState([])
+    const [isLoading,setIsLoading]=useState(false)
     useEffect(()=>{
+        setIsLoading(true)
         fetch('https://boiling-hollows-19614.herokuapp.com/services')
         .then(res=>res.json())
-        .then(data=>setBlogs(data))
+        .then(data=>{
+            setBlogs(data)
+            setIsLoading(false)
+        })
         
     },[])
     console.log(blogs)
@@ -23,6 +28,10 @@ const ManageBlogs = () => {
         <div className='pb-5 '>
             <AdminHeader/>
         <Container>
+        <marquee><h1 className='fs-1 fw-bolder text-primary pt-5'>ALL TRAVELER BLOGS STORY POST MANAGE PAGE</h1></marquee>
+        {
+                isLoading &&  <Spinner animation="border" variant="primary" />
+            }
         
            <div className='row  g-4 pt-5'>
               {

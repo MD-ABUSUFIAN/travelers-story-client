@@ -1,15 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Container } from 'react-bootstrap';
+import { Button, Container, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import AdminHeader from '../AdminHeader/AdminHeader';
 
 
 const AllBlogs = () => {
-    const [blogs,setBlogs]=useState([])
+    const [blogs,setBlogs]=useState([]);
+    const [isLoading,setIsLoading]=useState(false)
     useEffect(()=>{
+        setIsLoading(true)
         fetch('https://boiling-hollows-19614.herokuapp.com/services')
         .then(res=>res.json())
-        .then(data=>setBlogs(data))
+        .then(data=>{
+            setBlogs(data)
+            setIsLoading(false)
+
+        }
+            )
         
     },[])
     console.log(blogs)
@@ -17,8 +24,10 @@ const AllBlogs = () => {
         <div>
             <AdminHeader/>
         <Container>
-            <h1>This is Blogs Page</h1>
-
+            {
+                isLoading &&  <Spinner animation="border" variant="primary" />
+            }
+            <marquee><h1 className='fs-1 fw-bolder text-primary pt-5'>ALL TRAVELER BLOGS STORY POST PAGE</h1></marquee>
            <div className='row  g-4 py-5 container'>
               {
                 blogs?.map(blog=>
