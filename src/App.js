@@ -12,6 +12,8 @@ import Login from './Components/Login/Login/Login';
 import Register from './Components/Login/Register/Register';
 import AdminDashboard from './Components/Admin/AdminDashboard/AdminDashboard';
 import AuthProvider from './contexts/AuthProvider/AuthProvider';
+import BlogDetails from './Components/Home/BlogsDetails/BlogDetails';
+import Blogs from './Components/Home/Blogs/Blogs';
 
 
 
@@ -30,6 +32,8 @@ function App() {
             <Route path="/login" element={<Login/>}/>      
             <Route path="/register" element={<Register/>}/>      
             <Route path="/admin" element={<AdminDashboard/>}/>      
+            <Route path="/blogs" element={<Blogs/>}/>      
+            <Route path="/blog/:detailsId" element={<BlogDetails/>}/>      
           </Routes>
         <Footer/>
      </BrowserRouter>
