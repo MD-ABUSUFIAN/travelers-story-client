@@ -29,7 +29,7 @@ const BlogDetails = () => {
                 </div>
                 <div className='p-5'>
                     <h3>Place Name: {singleBlog[0]?.title}</h3>
-                    <h3>Total Cost: {singleBlog[0]?.cost}</h3>
+                    <h4>Total Cost:<span className='text-danger fw-bolder'> $ {singleBlog[0]?.cost}</span></h4>
                     <p>Information : {singleBlog[0]?.description}</p>
                     
                 </div>

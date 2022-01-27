@@ -35,7 +35,7 @@ const Blogs = () => {
                     </div>
                     <div className='col col-lg-6 col-md-6 col-sm-12 col-12 '>
                          <h4>Place: <span className='text-danger pt-2'>{blog?.title}</span></h4>
-                         <h5>Cost:<span className='text-primary'> {blog?.COST} TK</span></h5>
+                         <h5>Cost:<span className='text-primary fw-bolder'> ${blog?.cost}</span></h5>
                          <Link to={`/blog/${blog?._id}`}>
                            <Button>View Details</Button>
                          </Link>    

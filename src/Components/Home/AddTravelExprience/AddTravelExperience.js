@@ -22,7 +22,7 @@ const AddTravelExperience = () => {
            if(data?.insertedId){
             swal("Successfully", "Thank You Successfully Added", "success");
             console.log(data)
-            // reset()
+             reset()
            }
        })
         console.log(data)

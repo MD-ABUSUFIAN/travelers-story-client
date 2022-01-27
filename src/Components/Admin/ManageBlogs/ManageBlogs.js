@@ -42,7 +42,7 @@ const ManageBlogs = () => {
                     </div>
                     <div className='col col-lg-6 col-md-6 col-sm-12 col-12 '>
                          <h4>Place :<span className='text-danger py-2'>{blog?.title}</span> </h4>
-                         <h5>Total Cost: {blog?.price}</h5>
+                         <h5>Cost: <span className='text-info fw-bolder'> ${blog?.cost}</span></h5>
                          <h5>Status: <span className='text-primary fw-bolder'>{blog?.status}</span></h5>
                          <button onClick={()=>handleUpdate(blog?._id)} className='btn btn-primary fs-5'>Update</button>
                         
