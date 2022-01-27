@@ -1,10 +1,13 @@
 import React from 'react';
 import { Button, Container, Nav, Navbar} from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 
 
 
 const AdminHeader = () => {
+    const {logOut}=useAuth();
+
     return (
         <div>
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -16,6 +19,9 @@ const AdminHeader = () => {
     <NavLink className="navLink" to="/allBlogs">All-Blogs</NavLink>
     <NavLink className="navLink" to="/manageBlogs">Manage-Blogs</NavLink>
     <NavLink className="navLink" to="/newBlog">New-Blogs</NavLink>
+     <Link to="/"><Button onClick={logOut} className='btn-danger navLink border-0 fw-bolder'>
+            LogOut
+    </Button></Link>
     
     </Nav>
     </Navbar.Collapse>

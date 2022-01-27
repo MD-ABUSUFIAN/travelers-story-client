@@ -10,19 +10,18 @@ const ManageBlogs = () => {
     const [isLoading,setIsLoading]=useState(false)
     useEffect(()=>{
         setIsLoading(true)
-        fetch('https://boiling-hollows-19614.herokuapp.com/services')
+        fetch(`https://tranquil-lake-81267.herokuapp.com/blogs?status=Pending`)
         .then(res=>res.json())
         .then(data=>{
             setBlogs(data)
-            setIsLoading(false)
         })
+        setIsLoading(false)
         
     },[])
     console.log(blogs)
 
-    const handleDelete=(data)=>{
-        console.log(data)
-
+    const handleUpdate=(id)=>{
+        console.log(id)
     }
     return (
         <div className='pb-5 '>
@@ -43,9 +42,9 @@ const ManageBlogs = () => {
                     </div>
                     <div className='col col-lg-6 col-md-6 col-sm-12 col-12 '>
                          <h4>Place :<span className='text-danger py-2'>{blog?.title}</span> </h4>
-                         <h4>Total Cost: {blog?.price}</h4>
-                         <button onClick={()=>handleDelete(blog?._id)} className='btn btn-danger m-2 fs-5'>Delete</button>
-                         <button onClick={()=>handleDelete(blog?._id)} className='btn btn-primary fs-5'>Update</button>
+                         <h5>Total Cost: {blog?.price}</h5>
+                         <h5>Status: <span className='text-primary fw-bolder'>{blog?.status}</span></h5>
+                         <button onClick={()=>handleUpdate(blog?._id)} className='btn btn-primary fs-5'>Update</button>
                         
                      </div>
                

@@ -11,7 +11,7 @@ const BlogDetails = () => {
     console.log(detailsId)
  
     useEffect(()=>{
-        fetch('https://boiling-hollows-19614.herokuapp.com/services')
+         fetch('https://tranquil-lake-81267.herokuapp.com/allBlogs')
         .then(res=>res.json())
         .then(data=>setBlogs(data))
       
@@ -29,7 +29,7 @@ const BlogDetails = () => {
                 </div>
                 <div className='p-5'>
                     <h3>Place Name: {singleBlog[0]?.title}</h3>
-                    <h3>Total Cost: {singleBlog[0]?.price}</h3>
+                    <h3>Total Cost: {singleBlog[0]?.cost}</h3>
                     <p>Information : {singleBlog[0]?.description}</p>
                     
                 </div>

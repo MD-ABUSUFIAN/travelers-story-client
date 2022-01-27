@@ -12,8 +12,8 @@ const AddTravelExperience = () => {
     const { register, handleSubmit,reset } = useForm();
     const {loginUser,user}=useAuth();
     const onSubmit = data => {
-        data.status=true;
-       fetch('http://localhost:5000/newBlog',{
+        data.status="Approved";
+           fetch('https://tranquil-lake-81267.herokuapp.com/newBlog',{
            method:"POST",
            headers:{'content-type':'application/json'},
            body:JSON.stringify(data)
@@ -43,7 +43,7 @@ const AddTravelExperience = () => {
                     <input className='w-100 m-1 rounded py-3' {...register("title")} type="text" required placeholder='Write Travel Place Name'  />
                     <input className='w-100 m-1 rounded py-3' {...register("img")} type="text" required placeholder='Write Travel Place Image Url'  />
                     <input className='w-100 m-1 rounded py-3' {...register("location")} type="text" required placeholder='Write Travel Place Location'  />
-                    <input className='w-100 m-1 rounded py-3' {...register("text")} type="number" required placeholder='Write Travel Total Cost'  />
+                    <input className='w-100 m-1 rounded py-3' {...register("cost")} type="number" required placeholder='Write Travel Total Cost'  />
                     <input className='w-100 m-1 rounded py-3' {...register("description")} type="text" required placeholder='Write Travel Place Description'  />
                     <br/>
                     <input className='w-100 m-1 rounded py-3' {...register("date")} type="date" placeholder='Write Your Travel Date' required />

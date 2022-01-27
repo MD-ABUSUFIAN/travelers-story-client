@@ -12,8 +12,8 @@ const AddTravelExperience = () => {
     const { register, handleSubmit,reset } = useForm();
     const {loginUser,user}=useAuth();
     const onSubmit = data => {
-        data.status=false;
-       fetch('http://localhost:5000/newBlog',{
+        data.status="Pending";
+           fetch('https://tranquil-lake-81267.herokuapp.com/newBlog',{
            method:"POST",
            headers:{'content-type':'application/json'},
            body:JSON.stringify(data)
@@ -22,7 +22,7 @@ const AddTravelExperience = () => {
            if(data?.insertedId){
             swal("Successfully", "Thank You Successfully Added", "success");
             console.log(data)
-            reset()
+            // reset()
            }
        })
         console.log(data)
@@ -32,8 +32,8 @@ const AddTravelExperience = () => {
     return (
         <div className='travel-bg'>
             <Header/>
-           <div className='w-100 mx-auto mb-5 pb-5' >
-                {<form className='w-50 mx-auto mt-5 pt-5' onSubmit={handleSubmit(onSubmit)}>
+           <div className='w-100 mx-auto pb-5' >
+                {<form className='w-50 mx-auto  pt-5' onSubmit={handleSubmit(onSubmit)}>
                 <h1 className='text-center fw-bolder text-danger'>Share Travel Experience Form</h1>
                    
                     <input className='w-100 m-1 rounded py-3' {...register("email",{required:true})} type="email" value={user?.email} />
@@ -42,7 +42,7 @@ const AddTravelExperience = () => {
                     <input className='w-100 m-1 rounded py-3' {...register("title")} type="text" required placeholder='Write Travel Place Name'  />
                     <input className='w-100 m-1 rounded py-3' {...register("img")} type="text" required placeholder='Write Travel Place Image Url'  />
                     <input className='w-100 m-1 rounded py-3' {...register("location")} type="text" required placeholder='Write Travel Place Location'  />
-                    <input className='w-100 m-1 rounded py-3' {...register("text")} type="number" required placeholder='Write Travel Total Cost'  />
+                    <input className='w-100 m-1 rounded py-3' {...register("cost")} type="number" required placeholder='Write Travel Total Cost'  />
                     <input className='w-100 m-1 rounded py-3' {...register("description")} type="text" required placeholder='Write Travel Place Description'  />
                     <br/>
                     <input className='w-100 m-1 rounded py-3' {...register("date")} type="date" placeholder='Write Your Travel Date' required />

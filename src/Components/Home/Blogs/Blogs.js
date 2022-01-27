@@ -1,22 +1,31 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Container } from 'react-bootstrap';
+import { Button, Container, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 import './Blogs.css'
 
 const Blogs = () => {
     const [blogs,setBlogs]=useState([])
+    const {user}=useAuth();
+    const [isLoading,setIsLoading]=useState(true)
     useEffect(()=>{
-        fetch('https://boiling-hollows-19614.herokuapp.com/services')
+        setIsLoading(true)
+        fetch(`https://tranquil-lake-81267.herokuapp.com/blogs?status=Approved`)
         .then(res=>res.json())
-        .then(data=>setBlogs(data))
+        .then(data=>{
+            setBlogs(data)
+            setIsLoading(false)
+        })
         
     },[])
     console.log(blogs)
     return (
         <Container>
-            <h1>This is Blogs Page</h1>
+            {isLoading &&   <Spinner animation="border" variant="primary" />
+}
+           <marquee> <h1 className='fw-bolder py-5'>WELLCOME TRAVELERS STORY WEBSITE PLZ SHEAR YOUR TRAVEL STORY <span className='text-primary fw-bolder'>{user?.email}</span></h1></marquee>
 
-           <div className='row  g-4'>
+           <div className='row  g-4 pb-5'>
               {
                 blogs?.map(blog=>
             <div key={blog?._id} className=' col-md-6 col-lg-6 col-sm-12 col-12 blogs-body rounded'>
@@ -25,8 +34,8 @@ const Blogs = () => {
                          <img className='img-fluid' src={blog?.img} alt="" />
                     </div>
                     <div className='col col-lg-6 col-md-6 col-sm-12 col-12 '>
-                         <h3>Place Name: {blog?.title}</h3>
-                         <h3>Total Cost: {blog?.price}</h3>
+                         <h4>Place: <span className='text-danger pt-2'>{blog?.title}</span></h4>
+                         <h5>Cost:<span className='text-primary'> {blog?.COST} TK</span></h5>
                          <Link to={`/blog/${blog?._id}`}>
                            <Button>View Details</Button>
                          </Link>    

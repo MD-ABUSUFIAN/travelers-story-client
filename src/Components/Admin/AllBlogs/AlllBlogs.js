@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Container, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import AdminHeader from '../AdminHeader/AdminHeader';
+import swal from 'sweetalert';
 
 
 const AllBlogs = () => {
@@ -9,17 +10,43 @@ const AllBlogs = () => {
     const [isLoading,setIsLoading]=useState(false)
     useEffect(()=>{
         setIsLoading(true)
-        fetch('https://boiling-hollows-19614.herokuapp.com/services')
+        fetch('https://tranquil-lake-81267.herokuapp.com/allBlogs')
         .then(res=>res.json())
         .then(data=>{
             setBlogs(data)
-            setIsLoading(false)
-
-        }
-            )
-        
-    },[])
-    console.log(blogs)
+        } ) 
+        setIsLoading(false)
+    },[isLoading])
+    
+    const handleDelete=(id)=>{
+        console.log(id)
+            fetch(`https://tranquil-lake-81267.herokuapp.com/manageBlogs/${id}`,{
+            method:"DELETE",
+            headers:{'content-type':'application/json'},
+        }).then(res=>res.json())
+        .then(data=>{
+            if(data?.deletedCount){
+                swal({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover this imaginary file!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                  })
+                  .then((willDelete) => {
+                    if (willDelete) {
+                      swal("Poof! Your imaginary file has been deleted!", {
+                        icon: "success",
+                      });
+                    } else {
+                      swal("Your imaginary file is safe!");
+                    }
+                  });
+                  setIsLoading(true)
+                  console.log(data)
+                  }
+             setIsLoading(false)
+            }) }
     return (
         <div>
             <AdminHeader/>
@@ -37,10 +64,12 @@ const AllBlogs = () => {
                          <img className='img-fluid bolgs-image' src={blog?.img} alt="" />
                     </div>
                     <div className='col col-lg-6 col-md-6 col-sm-12 col-12 '>
-                         <h3>Place :<span className='text-danger py-2'>{blog?.title}</span> </h3>
-                         <h3>Total Cost: {blog?.price}</h3>
-                         <p>{blog?.description.slice(0,90)}</p>
-                         
+                         <h4>Place :<span className='text-danger py-2'>{blog?.title}</span> </h4>
+                         <h5>Total Cost: {blog?.price}</h5>
+                         <p>Infomation: {blog?.description.slice(0,90)}</p>
+                         <p>Status: <span className='text-primary fw-bolder'>{blog?.status}</span></p>
+                         <button onClick={()=>handleDelete(blog?._id)} className='btn btn-danger m-2 fs-5'>Delete</button>
+    
                      </div>
                 </div>
 
