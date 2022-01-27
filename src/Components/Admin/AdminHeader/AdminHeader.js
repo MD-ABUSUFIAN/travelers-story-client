@@ -16,9 +16,9 @@ const AdminHeader = () => {
     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
     <Navbar.Collapse id="responsive-navbar-nav">
     <Nav className="ms-auto">
-    <NavLink className="navLink" to="/allBlogs">All-Blogs</NavLink>
-    <NavLink className="navLink" to="/manageBlogs">Manage-Blogs</NavLink>
-    <NavLink className="navLink" to="/newBlog">New-Blogs</NavLink>
+    <NavLink className="navLink" to="/admin/allBlogs">All-Blogs</NavLink>
+    <NavLink className="navLink" to="/admin/manageBlogs">Manage-Blogs</NavLink>
+    <NavLink className="navLink" to="/admin/newBlog">New-Blogs</NavLink>
      <Link to="/"><Button onClick={logOut} className='btn-danger navLink border-0 fw-bolder'>
             LogOut
     </Button></Link>

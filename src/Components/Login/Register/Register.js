@@ -1,19 +1,19 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
-
 import './Register.css';
 
 
 const Register = () => {
     const {registerUser}=useAuth();
+    const navigate=useNavigate();
     const { register, handleSubmit,reset } = useForm();
     const onSubmit = data => {
         if(data?.password===data?.password2){
             console.log(data)
-            registerUser(data?.email,data?.password)
+            registerUser(data?.email,data?.password,data?.displayName,navigate)
             reset()
         }
         else{

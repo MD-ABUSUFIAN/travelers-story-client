@@ -16,6 +16,7 @@ import Blogs from './Components/Home/Blogs/Blogs';
 import NewBlogs from '../src/Components/Admin/NewBlogs/NewBlogs'
 import AllBlogs from './Components/Admin/AllBlogs/AlllBlogs';
 import ManageBlogs from './Components/Admin/ManageBlogs/ManageBlogs';
+import PrivateRoute from './Components/Login/PrivateRoute/PrivateRoute';
 
 
 
@@ -33,12 +34,12 @@ function App() {
             <Route path="/contact" element={<Contact/>}/>      
             <Route path="/login" element={<Login/>}/>      
             <Route path="/register" element={<Register/>}/>      
-            <Route path="/admin" element={<AdminDashboard/>}/>      
+            <Route path="/admin" element={<PrivateRoute><AdminDashboard/></PrivateRoute>}/>      
             <Route path="/blogs" element={<Blogs/>}/>      
-            <Route path="/blog/:detailsId" element={<BlogDetails/>}/>      
-            <Route path="/newBlog" element={<NewBlogs/>}/>      
-            <Route path="/allBlogs" element={<AllBlogs/>}/>      
-            <Route path="/manageBlogs" element={<ManageBlogs/>}/>      
+            <Route path="/blog/:detailsId" element={<PrivateRoute><BlogDetails/></PrivateRoute>}/>      
+            <Route path="/admin/newBlog" element={<PrivateRoute><NewBlogs/></PrivateRoute>}/>      
+            <Route path="/admin/allBlogs" element={<PrivateRoute><AllBlogs/></PrivateRoute>}/>      
+            <Route path="/admin/manageBlogs" element={<PrivateRoute><ManageBlogs/></PrivateRoute>}/>      
           </Routes>
         <Footer/>
      </BrowserRouter>
