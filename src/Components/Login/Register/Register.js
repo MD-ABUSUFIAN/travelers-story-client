@@ -3,6 +3,7 @@ import { Container } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
+import Header from '../../Home/Header/Header';
 import './Register.css';
 
 
@@ -12,6 +13,7 @@ const Register = () => {
     const { register, handleSubmit,reset } = useForm();
     const onSubmit = data => {
         if(data?.password===data?.password2){
+            alert("Your Register Successfully??")
             console.log(data)
             registerUser(data?.email,data?.password,data?.displayName,navigate)
             reset()
@@ -23,6 +25,7 @@ const Register = () => {
     };
     return (
         <div className='register-bg'>
+            <Header/>
             
            <div className='w-100 mx-auto pt-5' >
                 {<form className='w-50 mx-auto mt-5 ' onSubmit={handleSubmit(onSubmit)}>

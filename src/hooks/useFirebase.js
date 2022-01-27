@@ -26,16 +26,18 @@ const useFirebase=()=>{
      }).finally(()=>setIsLoading(false))
    };
 
-    const registerUser=(email,password,displayName,navigate)=>{
+    const registerUser=(email,password,name,navigate)=>{
       setIsLoading(true)
         createUserWithEmailAndPassword(auth, email, password)
        .then((userCredential) => {
+        
         setAuthError('');
         navigate('/')
         // ...
        })
        .catch((error) => {
         setAuthError(error.message)
+       
         // ..
          }).finally(()=>setIsLoading(false))
        };

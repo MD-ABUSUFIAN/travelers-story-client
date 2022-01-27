@@ -23,7 +23,7 @@ const Blogs = () => {
         <Container>
             {isLoading &&   <Spinner animation="border" variant="primary" />
 }
-           <marquee> <h1 className='fw-bolder py-5'>WELLCOME TRAVELERS STORY WEBSITE PLZ SHEAR YOUR TRAVEL STORY <span className='text-primary fw-bolder'>{user?.email}</span></h1></marquee>
+           <marquee> <h1 className='fw-bolder py-5'>WELLCOME TRAVELERS STORY WEBSITE PLZ SHARE YOUR TRAVEL STORY <span className='text-primary fw-bolder'>{user?.email}</span></h1></marquee>
 
            <div className='row  g-4 pb-5'>
               {
